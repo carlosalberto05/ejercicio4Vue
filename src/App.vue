@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Vue Js</h1>
+  <Car :power="power" :upPower="upPower" @downPower="downPower" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Car from "./components/Car";
+import { ref } from "vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Car,
+  },
+  setup() {
+    let power = ref(30);
+
+    const upPower = () => {
+      power.value++;
+    };
+
+    const downPower = () => {
+      power.value--;
+    };
+
+    return {
+      power,
+      upPower,
+      downPower,
+    };
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style></style>
